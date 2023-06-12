@@ -6,31 +6,33 @@ const server = http.createServer((request, response) => {
 
 	if (url === '/') {
 		response.write('<html>');
-		response.write('<head>');
-		response.write('	<title>Assignment 1</title>');
-		response.write('</head>');
-		response.write('<body>');
-		response.write('	<h1>Assignment 1</h1>');
-		response.write('	<ul>');
-		response.write('		<li>User 1</li>');
-		response.write('		<li>User 2</li>');
-		response.write('		<li>User 3</li>');
-		response.write('	</ul>');
-		response.write('	<form action="/create-user" method="POST">');
-		response.write('		<input type="text" name="create-user" />');
-		response.write('		<button type="submit">Add</button>');
-		response.write('	</form>');
-		response.write('</body>');
+		response.write('	<head>');
+		response.write('		<title>Assignment 1</title>');
+		response.write('	</head>');
+		response.write('	<body>');
+		response.write('		<h1>Assignment 1</h1>');
+		response.write('		<ul>');
+		response.write('			<li>User 1</li>');
+		response.write('			<li>User 2</li>');
+		response.write('			<li>User 3</li>');
+		response.write('		</ul>');
+		response.write('		<form action="/create-user" method="POST">');
+		response.write('			<input type="text" name="create-user">');
+		response.write('			<button type="submit">Add</button>');
+		response.write('		</form>');
+		response.write('	</body>');
 		response.write('</html>');
 		return response.end();
 	}
 
 	if (url === '/create-user' && method === 'POST') {
 		const username = [];
-		response.on('data', chunk => {
+		request.on('data', chunk => {
+			console.log(chunk);
 			username.push(chunk);
 		});
-		return response.on('end', () => {
+
+		return request.on('end', () => {
 			const parsedData = Buffer.concat(username).toString();
 			const user = parsedData.split('=')[1];
 			console.log(user);
