@@ -10,7 +10,23 @@ const server = http.createServer((request, response) => {
 		response.write('		<title>Assignment 1</title>');
 		response.write('	</head>');
 		response.write('	<body>');
-		response.write('		<h1>Assignment 1</h1>');
+		response.write('		<h1>Enter new users here</h1>');
+		response.write('		<form action="/create-user" method="POST">');
+		response.write('			<input type="text" name="create-user">');
+		response.write('			<button type="submit">Add</button>');
+		response.write('		</form>');
+		response.write('	</body>');
+		response.write('</html>');
+		return response.end();
+	}
+
+	if (url === '/users') {
+		response.write('<html>');
+		response.write('	<head>');
+		response.write('		<title>Assignment 1</title>');
+		response.write('	</head>');
+		response.write('	<body>');
+		response.write('		<h1>Welcome to /users</h1>');
 		response.write('		<ul>');
 		response.write('			<li>User 1</li>');
 		response.write('			<li>User 2</li>');
