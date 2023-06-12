@@ -12,7 +12,7 @@ const server = http.createServer((request, response) => {
 		response.write('	<body>');
 		response.write('		<h1>Enter new users here</h1>');
 		response.write('		<form action="/create-user" method="POST">');
-		response.write('			<input type="text" name="create-user">');
+		response.write('			<input type="text" name="username">');
 		response.write('			<button type="submit">Add</button>');
 		response.write('		</form>');
 		response.write('	</body>');
