@@ -44,8 +44,12 @@ const server = http.createServer((request, response) => {
 
 	response.setHeader('Content-Type', 'text/html');
 	response.write('<html>');
-	response.write('<head><title>Default page</title><head>');
-	response.write('<body><h1>Fuck you from my Node.js Server!</h1></body>');
+	response.write('	<head>');
+	response.write('		<title>Default page</title>');
+	response.write('	</head>');
+	response.write('	<body>');
+	response.write('		<h1>Fuck you from my Node.js Server!</h1>');
+	response.write('	</body>');
 	response.write('</html>');
 	response.end();
 });
